@@ -1,9 +1,13 @@
-import { HeaderProps } from "./types"
+import { Container } from "../Container";
+import { HeaderProps } from "./types";
+import * as S from "./styles";
 
 export function Header(props: HeaderProps) {
   return (
-    <header>
-      <h1>he</h1> 
-    </header>
-  )
+    <S.Header>
+      <Container>
+        <h1>he</h1>
+      </Container>
+    </S.Header>
+  );
 }
