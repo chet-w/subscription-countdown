@@ -1,11 +1,15 @@
-import './App.css';
-import { Layout } from './components/Layout';
+import { ThemeProvider } from "styled-components";
+import "./App.css";
+import { Layout } from "./components/Layout";
+import { theme } from "./Theme";
 
 function App() {
   return (
-    <Layout>
-      <h2>111</h2>
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <h2>111</h2>
+      </Layout>
+    </ThemeProvider>
   );
 }
 
