@@ -37,9 +37,11 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
         <Service
           name="Apple Music"
           image="https://www.apple.com/v/apple-music/p/images/overview/icon_apple_music__v9epn6m1oj6u_large_2x.png"
-          amount={20}
+          amount={9.99}
           occurrance="monthly"
-          nextPaymentDue={format(billingDate, "iiii do MMMM yyyy")}
+          nextPaymentDue={
+            "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+          }
         />
         <div style={{ textAlign: "right" }}>
           <Heading level="3">Time left to cancel</Heading>
