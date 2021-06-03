@@ -12,5 +12,7 @@ export function Badge(props: BadgeProps): ReactElement {
       return <S.Warning>{props.content}</S.Warning>;
     case "danger":
       return <S.Danger>{props.content}</S.Danger>;
+    default:
+      return <S.Success>{props.content}</S.Success>;
   }
 }

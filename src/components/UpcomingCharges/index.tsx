@@ -15,7 +15,9 @@ import { differenceInMinutes, differenceInSeconds } from "date-fns/esm";
 
 export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
   const [timeLeft, setTimeLeft] = useState("");
-  const [billingDate] = useState(new Date(2021, 6, 9));
+  const [billingDate] = useState(
+    new Date("Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)")
+  );
 
   useInterval(() => {
     const today = new Date();
@@ -35,10 +37,12 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
       <S.ContentWrapper>
         <Service
           name="Apple Music"
-          image=""
-          amount={20}
+          image="https://www.apple.com/v/apple-music/p/images/overview/icon_apple_music__v9epn6m1oj6u_large_2x.png"
+          amount={9.99}
           occurrance="monthly"
-          nextPaymentDue={billingDate}
+          nextPaymentDue={
+            "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
+          }
         />
         <div style={{ textAlign: "right" }}>
           <Heading level="3">Time left to cancel</Heading>
