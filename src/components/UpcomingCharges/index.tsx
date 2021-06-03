@@ -16,7 +16,9 @@ import { differenceInMinutes, differenceInSeconds } from "date-fns/esm";
 
 export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
   const [timeLeft, setTimeLeft] = useState("");
-  const [billingDate] = useState(new Date(2021, 6, 9));
+  const [billingDate] = useState(
+    new Date("Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)")
+  );
 
   useInterval(() => {
     const today = new Date();
@@ -40,7 +42,7 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
           amount={9.99}
           occurrance="monthly"
           nextPaymentDue={
-            "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+            "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
           }
         />
         <div style={{ textAlign: "right" }}>

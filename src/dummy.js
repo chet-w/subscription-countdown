@@ -6,7 +6,7 @@ export const data = [
     amount: 8.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "Netflix",
@@ -15,7 +15,7 @@ export const data = [
     amount: 22.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "Spotify",
@@ -24,7 +24,7 @@ export const data = [
     amount: 14.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "Lastpass",
@@ -33,7 +33,7 @@ export const data = [
     amount: 4.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "Apple Arcade",
@@ -42,7 +42,7 @@ export const data = [
     amount: 4.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "iCloud",
@@ -51,7 +51,7 @@ export const data = [
     amount: 4.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "Hello Fresh",
@@ -60,7 +60,7 @@ export const data = [
     amount: 120,
     occurrance: "Weekly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   },
   {
     name: "Audible",
@@ -69,6 +69,6 @@ export const data = [
     amount: 12.99,
     occurrance: "Monthly",
     nextPaymentDue:
-      "Sat Jul 03 2021 15:01:06 GMT+1200 (New Zealand Standard Time)"
+      "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
   }
 ];
