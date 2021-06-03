@@ -1,17 +1,32 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { Heading } from "../Heading";
 import { UpcomingChargesProps } from "./types";
 import * as S from "./styles";
 import { Service } from "../Service";
 import { useInterval } from "../../hooks/useInterval";
+import {
+  addDays,
+  addHours,
+  addMinutes,
+  differenceInDays,
+  differenceInHours
+} from "date-fns";
+import { differenceInMinutes, differenceInSeconds } from "date-fns/esm";
 
 export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
-  const [timeLeft, setTimeLeft] = useState(new Date().getSeconds());
+  const [timeLeft, setTimeLeft] = useState("");
+  const [billingDate] = useState(new Date(2021, 6, 9));
 
   useInterval(() => {
-    if (timeLeft > 0) {
-      setTimeLeft(timeLeft - 1);
-    }
+    const today = new Date();
+    const daysLeft = differenceInDays(billingDate, today);
+    const todayPlusDays = addDays(today, daysLeft);
+    const hoursLeft = differenceInHours(billingDate, todayPlusDays);
+    const todayPlusHours = addHours(todayPlusDays, hoursLeft);
+    const minsLeft = differenceInMinutes(billingDate, todayPlusHours);
+    const todayPlusMins = addMinutes(todayPlusHours, minsLeft);
+    const secondsLeft = differenceInSeconds(billingDate, todayPlusMins);
+    setTimeLeft(`${daysLeft}:${hoursLeft}:${minsLeft}:${secondsLeft}`);
   }, 1000);
 
   return (
@@ -23,7 +38,7 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
           image=""
           amount={20}
           occurrance="monthly"
-          nextPaymentDue={new Date()}
+          nextPaymentDue={billingDate}
         />
         <div style={{ textAlign: "right" }}>
           <Heading level="3">Time left to cancel</Heading>
