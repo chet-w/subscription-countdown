@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { ModalProps } from "./types";
+import React, { ReactElement, useRef } from "react";
+import { BackdropProps, ModalProps } from "./types";
 import * as S from "./styles";
 import { useModal } from "../../providers/ModalProvider";
 
@@ -11,8 +11,19 @@ export function Modal(props: ModalProps): ReactElement {
   );
 }
 
-export function Backdrop(): ReactElement {
+export function Backdrop(props: BackdropProps): ReactElement {
   const { closeModal } = useModal();
+  const BackdropRef = useRef<HTMLDivElement>(null);
 
-  return <S.Backdrop onClick={() => closeModal()} />;
+  function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    if (event.target === BackdropRef.current) {
+      closeModal();
+    }
+  }
+
+  return (
+    <S.Backdrop ref={BackdropRef} onClick={(event) => handleClick(event)}>
+      {props.children}
+    </S.Backdrop>
+  );
 }

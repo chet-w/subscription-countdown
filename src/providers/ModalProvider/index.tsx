@@ -37,8 +37,7 @@ export function ModalProvider(props: ModalProviderProps): ReactElement {
       <AnimatePresence>
         {modal && (
           <>
-            <Backdrop />
-            modal
+            <Backdrop>{modal}</Backdrop>
           </>
         )}
       </AnimatePresence>
