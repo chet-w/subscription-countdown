@@ -5,3 +5,7 @@ export interface ModalContextValues {
   closeModal: () => void;
   isOpen: boolean;
 }
+
+export interface ModalProviderProps {
+  children: ReactElement | ReactElement[];
+}

@@ -1,10 +1,20 @@
-import React, { createContext, ReactElement, useState } from "react";
+import React, {
+  createContext,
+  ReactElement,
+  useContext,
+  useState
+} from "react";
 import { AnimatePresence } from "framer-motion";
-import { ModalContextValues } from "./types";
+import { ModalContextValues, ModalProviderProps } from "./types";
+import { Backdrop } from "../../components/Modal";
 
 const ModalContext = createContext<ModalContextValues | null>(null);
 
-function ModalProvider(): ReactElement {
+export function useModal(): ModalContextValues {
+  return useContext(ModalContext)!;
+}
+
+export function ModalProvider(props: ModalProviderProps): ReactElement {
   const [modal, setModal] = useState<ReactElement | null>(null);
 
   const openModal = (newModal: ReactElement): void => {
@@ -27,7 +37,7 @@ function ModalProvider(): ReactElement {
       <AnimatePresence>
         {modal && (
           <>
-            <div />
+            <Backdrop />
             modal
           </>
         )}
@@ -35,5 +45,3 @@ function ModalProvider(): ReactElement {
     </ModalContext.Provider>
   );
 }
-
-export default ModalProvider;

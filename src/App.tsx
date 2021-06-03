@@ -4,14 +4,17 @@ import { Layout } from "./components/Layout";
 import { UpcomingCharges } from "./components/UpcomingCharges";
 import { theme } from "./Theme";
 import "./App.css";
+import { ModalProvider } from "./providers/ModalProvider";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
-        <UpcomingCharges />
-        <AllSubscriptions />
-      </Layout>
+      <ModalProvider>
+        <Layout>
+          <UpcomingCharges />
+          <AllSubscriptions />
+        </Layout>
+      </ModalProvider>
     </ThemeProvider>
   );
 }
