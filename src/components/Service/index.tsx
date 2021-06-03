@@ -13,7 +13,11 @@ export function Service(props: ServiceProps): ReactElement {
       </S.SpacedBetweenRow>
       <S.SpacedBetweenRow>
         <S.Image />
-        <Heading level="3">{`$${props.amount}`}</Heading>
+        <div style={{ textAlign: "right" }}>
+          <Heading level="3">{`$${props.amount}`}</Heading>
+          <b>Next payment due</b>
+          <div>{props.nextPaymentDue.toDateString()}</div>
+        </div>
       </S.SpacedBetweenRow>
     </S.Service>
   );

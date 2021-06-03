@@ -5,3 +5,9 @@ export const Section = styled.section`
   padding: 2rem;
   border-radius: 1rem;
 `;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
