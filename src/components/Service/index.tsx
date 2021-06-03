@@ -5,6 +5,7 @@ import { ServiceProps } from "./types";
 import * as S from "./styles";
 
 export function Service(props: ServiceProps): ReactElement {
+  console.log(props);
   return (
     <S.Service>
       <S.SpacedBetweenRow>
@@ -12,7 +13,7 @@ export function Service(props: ServiceProps): ReactElement {
         <Badge variant="success" content={props.occurrance} />
       </S.SpacedBetweenRow>
       <S.SpacedBetweenRow>
-        <S.Image />
+        <S.Image src={props.image} />
         <div style={{ textAlign: "right" }}>
           <Heading level="3">{`$${props.amount}`}</Heading>
           <b>Next payment due</b>

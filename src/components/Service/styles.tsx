@@ -7,11 +7,11 @@ export const Service = styled.article`
   border-radius: 1rem;
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   height: 96px;
   width: 96px;
   border-radius: 1rem;
-  background: ${(props) => props.theme.colors.secondary};
+  /* background: ${(props) => props.theme.colors.secondary}; */
 `;
 
 export const SpacedBetweenRow = styled.div`

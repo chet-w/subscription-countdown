@@ -36,7 +36,7 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
       <S.ContentWrapper>
         <Service
           name="Apple Music"
-          image=""
+          image="https://www.apple.com/v/apple-music/p/images/overview/icon_apple_music__v9epn6m1oj6u_large_2x.png"
           amount={20}
           occurrance="monthly"
           nextPaymentDue={format(billingDate, "iiii do MMMM yyyy")}
