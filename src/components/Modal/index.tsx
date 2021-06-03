@@ -6,7 +6,14 @@ import { useModal } from "../../providers/ModalProvider";
 export function Modal(props: ModalProps): ReactElement {
   return (
     <S.Modal id={props.id}>
-      <h4>{props.title}</h4>
+      <S.Header>
+        <h4>{props.title}</h4>
+      </S.Header>
+      <S.Body>{props.children}</S.Body>
+      <S.Footer>
+        <button>Cancel</button>
+        <button>Update Service</button>
+      </S.Footer>
     </S.Modal>
   );
 }
