@@ -12,10 +12,14 @@ declare module "styled-components" {
       grey: string;
       black: string;
       success: string;
+      successLight: string;
       info: string;
+      infoLight: string;
       warning: string;
+      warningLight: string;
       yellow: string;
       danger: string;
+      dangerLight: string;
     };
     breakpoints: {
       xs: number;

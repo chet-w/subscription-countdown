@@ -10,9 +10,13 @@ export const theme: DefaultTheme = {
     black: "#111111",
     yellow: "#ffc041",
     success: "#0C9869",
+    successLight: "#d1eee4",
     info: "#1890FF",
+    infoLight: "#b4dbff",
     warning: "#F9AD15",
-    danger: "#D9363E"
+    warningLight: "#fdf3dd",
+    danger: "#D9363E",
+    dangerLight: "#ffe8e9"
   },
   breakpoints: {
     xs: 425,
