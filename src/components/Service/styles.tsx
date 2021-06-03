@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Service = styled.article`
   padding: 1rem;
   background: #fafafa;
-  width: 320px;
+  width: 360px;
   border-radius: 1rem;
 `;
 

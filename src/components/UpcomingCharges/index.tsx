@@ -9,7 +9,8 @@ import {
   addHours,
   addMinutes,
   differenceInDays,
-  differenceInHours
+  differenceInHours,
+  format
 } from "date-fns";
 import { differenceInMinutes, differenceInSeconds } from "date-fns/esm";
 
@@ -38,7 +39,7 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
           image=""
           amount={20}
           occurrance="monthly"
-          nextPaymentDue={billingDate}
+          nextPaymentDue={format(billingDate, "iiii do MMMM yyyy")}
         />
         <div style={{ textAlign: "right" }}>
           <Heading level="3">Time left to cancel</Heading>

@@ -3,7 +3,6 @@ import { Heading } from "../Heading";
 import { Badge } from "../Badge";
 import { ServiceProps } from "./types";
 import * as S from "./styles";
-import { format } from "date-fns";
 
 export function Service(props: ServiceProps): ReactElement {
   return (
@@ -17,7 +16,7 @@ export function Service(props: ServiceProps): ReactElement {
         <div style={{ textAlign: "right" }}>
           <Heading level="3">{`$${props.amount}`}</Heading>
           <b>Next payment due</b>
-          <div>{format(props.nextPaymentDue, "iiii do MMMM yyyy")}</div>
+          <div>{props.nextPaymentDue}</div>
         </div>
       </S.SpacedBetweenRow>
     </S.Service>
