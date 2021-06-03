@@ -2,6 +2,7 @@ import React, { ReactElement, useRef } from "react";
 import { BackdropProps, ModalProps } from "./types";
 import * as S from "./styles";
 import { useModal } from "../../providers/ModalProvider";
+import { useScrollFreeze } from "../../hooks/useScrollFreeze";
 
 export function Modal(props: ModalProps): ReactElement {
   return (
@@ -21,6 +22,8 @@ export function Modal(props: ModalProps): ReactElement {
 export function Backdrop(props: BackdropProps): ReactElement {
   const { closeModal } = useModal();
   const BackdropRef = useRef<HTMLDivElement>(null);
+
+  useScrollFreeze();
 
   function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     if (event.target === BackdropRef.current) {
