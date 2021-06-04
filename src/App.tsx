@@ -2,16 +2,20 @@ import { ThemeProvider } from "styled-components";
 import { AllSubscriptions } from "./components/AllSubscriptions";
 import { Layout } from "./components/Layout";
 import { UpcomingCharges } from "./components/UpcomingCharges";
-import { theme } from "./Theme";
-import "./App.css";
+import { theme } from "./theme/Theme";
+import { GlobalStyles } from "./theme/GlobalStyles";
+import { ModalProvider } from "./providers/ModalProvider";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
-        <UpcomingCharges />
-        <AllSubscriptions />
-      </Layout>
+      <GlobalStyles />
+      <ModalProvider>
+        <Layout>
+          <UpcomingCharges />
+          <AllSubscriptions />
+        </Layout>
+      </ModalProvider>
     </ThemeProvider>
   );
 }

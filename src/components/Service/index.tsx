@@ -25,7 +25,7 @@ export function Service(props: ServiceProps): ReactElement {
   );
 
   return (
-    <S.Service>
+    <S.Service onClick={props.onClick}>
       <S.SpacedBetweenRow>
         <Heading level="3">{props.name}</Heading>
         <Badge
