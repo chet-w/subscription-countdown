@@ -1,7 +1,12 @@
-import { ReactElement } from "react";
+import { HTMLAttributes, ReactElement } from "react";
 
 export interface ModalProps {
   title: string;
   id: string;
   children: ReactElement | ReactElement[];
+  footerOptions: FooterOption[];
+}
+
+export interface FooterOption extends HTMLAttributes<HTMLButtonElement> {
+  text: string;
 }

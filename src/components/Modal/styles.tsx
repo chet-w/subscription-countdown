@@ -25,4 +25,6 @@ export const Footer = styled.footer`
   padding: 2rem;
   margin-top: auto;
   border-radius: 0 0 1rem 1rem;
+  display: flex;
+  justify-content: flex-end;
 `;
