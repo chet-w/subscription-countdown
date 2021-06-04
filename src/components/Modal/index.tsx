@@ -3,10 +3,18 @@ import { BackdropProps, ModalProps } from "./types";
 import * as S from "./styles";
 import { useModal } from "../../providers/ModalProvider";
 import { useScrollFreeze } from "../../hooks/useScrollFreeze";
+import { variants, transition } from "./animations";
 
 export function Modal(props: ModalProps): ReactElement {
   return (
-    <S.Modal id={props.id}>
+    <S.Modal
+      id={props.id}
+      variants={variants}
+      transition={transition}
+      initial="hidden"
+      animate="active"
+      exit="hidden"
+    >
       <S.Header>
         <h4>{props.title}</h4>
       </S.Header>

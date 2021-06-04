@@ -4,7 +4,7 @@ import * as S from "./styles";
 import { Heading } from "../Heading";
 import { Service } from "../Service";
 import { Service as ServiceType } from "../../types/Service";
-import { data } from "../../dummy.js";
+import { data } from "../../dummy";
 import { useModal } from "../../providers/ModalProvider";
 import { EditServiceModal } from "../EditServiceModal";
 

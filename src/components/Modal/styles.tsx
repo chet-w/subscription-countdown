@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Modal = styled.article`
+export const Modal = styled(motion.article)`
   width: 600px;
   height: 480px;
   border-radius: 1rem;
