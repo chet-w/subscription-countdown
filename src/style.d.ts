@@ -27,5 +27,11 @@ declare module "styled-components" {
       md: number;
       lg: number;
     };
+    styles: {
+      focus: string;
+      shadow: {
+        one: string;
+      }
+    }
   }
 }

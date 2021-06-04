@@ -6,7 +6,7 @@ export const Modal = styled(motion.article)`
   height: 480px;
   border-radius: 1rem;
   background: ${(props) => props.theme.colors.white};
-  box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: ${(props) => props.theme.styles.shadow.one};
   z-index: 1050;
   display: flex;
   flex-direction: column;

@@ -12,7 +12,7 @@ const BaseButton = styled.button`
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(12 152 105 / 25%);
+    box-shadow: ${(props) => props.theme.styles.focus};
   }
 
   &:hover {

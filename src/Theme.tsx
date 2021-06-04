@@ -23,5 +23,11 @@ export const theme: DefaultTheme = {
     sm: 768,
     md: 992,
     lg: 1200
+  },
+  styles: {
+    focus: "0 0 0 0.25rem rgb(12 152 105 / 25%)",
+    shadow: {
+      one: "0 0 25px 10px rgba(0, 0, 0, 0.05)"
+    }
   }
 };
