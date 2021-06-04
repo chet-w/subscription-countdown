@@ -8,8 +8,8 @@ export function Button(props: ButtonProps): ReactElement {
     case "primary":
       return <S.PrimaryButton {...otherProps}>{children}</S.PrimaryButton>;
     case "secondary":
-      return <S.PrimaryButton {...otherProps}>{children}</S.PrimaryButton>;
+      return <S.SecondaryButton {...otherProps}>{children}</S.SecondaryButton>;
     case "tertiary":
-      return <S.PrimaryButton {...otherProps}>{children}</S.PrimaryButton>;
+      return <S.TertiaryButton {...otherProps}>{children}</S.TertiaryButton>;
   }
 }

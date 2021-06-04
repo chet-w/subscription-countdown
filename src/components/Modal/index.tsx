@@ -25,7 +25,7 @@ export function Modal(props: ModalProps): ReactElement {
         <Button variant="tertiary" onClick={() => closeModal()}>
           Cancel
         </Button>
-        <button>Update Service</button>
+        <Button variant="primary">Update Service</Button>
       </S.Footer>
     </S.Modal>
   );

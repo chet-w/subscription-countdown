@@ -7,10 +7,16 @@ const BaseButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  margin: 0 0.5rem;
+  transition: all 0.2s ease;
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(12 152 105 / 25%);
+  }
+
+  &:hover {
+    filter: brightness(1.1);
   }
 `;
 
