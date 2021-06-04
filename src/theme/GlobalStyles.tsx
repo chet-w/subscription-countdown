@@ -22,4 +22,9 @@ export const GlobalStyles = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0 0.5rem 0;
   }
+
+  *:focus {
+    outline: none;
+    box-shadow: ${(props) => props.theme.styles.focus};
+  }
 `;

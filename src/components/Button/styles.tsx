@@ -10,11 +10,6 @@ const BaseButton = styled.button`
   margin: 0 0.5rem;
   transition: all 0.2s ease;
 
-  &:focus {
-    outline: 0;
-    box-shadow: ${(props) => props.theme.styles.focus};
-  }
-
   &:hover {
     filter: brightness(1.1);
   }
