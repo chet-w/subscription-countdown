@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { useModal } from "../../providers/ModalProvider";
+import { EditServiceForm } from "../EditServiceForm";
 import { Modal } from "../Modal";
 import { EditServiceModalProps } from "./types";
 
@@ -15,7 +16,7 @@ export function EditServiceModal(props: EditServiceModalProps): ReactElement {
         { text: "UpdateService", onClick: () => closeModal() }
       ]}
     >
-      <div> content</div>
+      <EditServiceForm />
     </Modal>
   );
 }
