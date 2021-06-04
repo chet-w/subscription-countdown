@@ -5,7 +5,3 @@ export interface ModalProps {
   id: string;
   children: ReactElement | ReactElement[];
 }
-
-export interface BackdropProps {
-  children: ReactElement;
-}

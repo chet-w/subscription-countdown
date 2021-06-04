@@ -1,8 +1,6 @@
-import React, { ReactElement, useRef } from "react";
-import { BackdropProps, ModalProps } from "./types";
+import { ReactElement } from "react";
+import { ModalProps } from "./types";
 import * as S from "./styles";
-import { useModal } from "../../providers/ModalProvider";
-import { useScrollFreeze } from "../../hooks/useScrollFreeze";
 import { variants, transition } from "./animations";
 
 export function Modal(props: ModalProps): ReactElement {
@@ -24,24 +22,5 @@ export function Modal(props: ModalProps): ReactElement {
         <button>Update Service</button>
       </S.Footer>
     </S.Modal>
-  );
-}
-
-export function Backdrop(props: BackdropProps): ReactElement {
-  const { closeModal } = useModal();
-  const BackdropRef = useRef<HTMLDivElement>(null);
-
-  useScrollFreeze();
-
-  function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    if (event.target === BackdropRef.current) {
-      closeModal();
-    }
-  }
-
-  return (
-    <S.Backdrop ref={BackdropRef} onClick={(event) => handleClick(event)}>
-      {props.children}
-    </S.Backdrop>
   );
 }

@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ModalContextValues, ModalProviderProps } from "./types";
-import { Backdrop } from "../../components/Modal";
+import { Backdrop } from "../../components/Backdrop";
 
 const ModalContext = createContext<ModalContextValues | null>(null);
 

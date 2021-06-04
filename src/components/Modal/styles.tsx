@@ -26,16 +26,3 @@ export const Footer = styled.footer`
   margin-top: auto;
   border-radius: 0 0 1rem 1rem;
 `;
-
-export const Backdrop = styled.div`
-  position: fixed;
-  z-index: 1000;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.1);
-`;
