@@ -1,5 +1,8 @@
 import { ReactElement } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Button } from "../Button";
+import { Form } from "../Form";
+import { Input } from "../Input";
 import { EditServiceFormProps } from "./types";
 
 interface IFormInputs {
@@ -17,12 +20,11 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
   const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstName", { required: true })} />
-      {errors.firstName && "First name is required"}
-      <input {...register("lastName", { required: true })} />
-      {errors.lastName && "Last name is required"}
-      <input type="submit" />
-    </form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Input {...register("firstName", { required: true })} />
+      {/* {errors.firstName && "First name is required"} */}
+      <Input {...register("lastName", { required: true })} />
+      {/* {errors.lastName && "Last name is required"} */}
+    </Form>
   );
 }
