@@ -5,6 +5,7 @@ export interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
   label: string;
   valid?: boolean;
   error?: string;
+  name: string;
 }
 
 export interface Option {

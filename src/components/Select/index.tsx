@@ -1,4 +1,5 @@
 import { ForwardedRef, forwardRef, ReactElement } from "react";
+import slugify from "slugify";
 import { AnimatePresence } from "framer-motion";
 import { InputContainer } from "../Input/styles";
 import { SelectProps } from "./types";
@@ -12,7 +13,7 @@ export const Select = forwardRef(function (
 ): ReactElement {
   return (
     <InputContainer>
-      <Label isActive isValid={props.valid}>
+      <Label isActive isValid={props.valid} htmlFor={slugify(props.name)}>
         {props.label}
       </Label>
       <S.Select {...props} ref={ref}>

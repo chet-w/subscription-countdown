@@ -1,5 +1,6 @@
 import { ForwardedRef, forwardRef, ReactElement, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import slugify from "slugify";
 import { InputProps } from "./types";
 import * as S from "./styles";
 import { Label } from "../Label";
@@ -17,11 +18,16 @@ export const Input = forwardRef(function (
 
   return (
     <S.InputContainer>
-      <Label isActive={isActive} isValid={props.valid}>
+      <Label
+        isActive={isActive}
+        isValid={props.valid}
+        htmlFor={slugify(props.name)}
+      >
         {props.label}
       </Label>
       <S.Input
         {...props}
+        id={slugify(props.name)}
         ref={ref}
         onFocus={() => setIsActive(true)}
         onBlur={(event) => handleBlur(event)}

@@ -17,7 +17,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm<EditServiceFormInputs>();
+  } = useForm<EditServiceFormInputs>({ mode: "all" });
 
   const onSubmit: SubmitHandler<EditServiceFormInputs> = (data) =>
     console.log(data);
