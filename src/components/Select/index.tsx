@@ -16,7 +16,13 @@ export const Select = forwardRef(function (
       <Label isActive isValid={props.valid} htmlFor={slugify(props.name)}>
         {props.label}
       </Label>
-      <S.Select {...props} ref={ref}>
+      <S.Select
+        {...props}
+        ref={ref}
+        id={slugify(props.name)}
+        aria-invalid={!props.valid}
+        aria-describedby={`feedback-${slugify(props.name)}`}
+      >
         <option value=""></option>
         {props.options.map(({ value, label }) => (
           <option key={value} value={value}>
@@ -25,7 +31,11 @@ export const Select = forwardRef(function (
         ))}
       </S.Select>
       <AnimatePresence>
-        {!props.valid && <Feedback>{props.error}</Feedback>}
+        {!props.valid && (
+          <Feedback id={`feedback-${slugify(props.name)}`}>
+            {props.error}
+          </Feedback>
+        )}
       </AnimatePresence>
     </InputContainer>
   );

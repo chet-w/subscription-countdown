@@ -31,9 +31,15 @@ export const Input = forwardRef(function (
         ref={ref}
         onFocus={() => setIsActive(true)}
         onBlur={(event) => handleBlur(event)}
+        aria-invalid={!props.valid}
+        aria-describedby={`feedback-${slugify(props.name)}`}
       />
       <AnimatePresence>
-        {!props.valid && <Feedback>{props.error}</Feedback>}
+        {!props.valid && (
+          <Feedback id={`feedback-${slugify(props.name)}`}>
+            {props.error}
+          </Feedback>
+        )}
       </AnimatePresence>
     </S.InputContainer>
   );
