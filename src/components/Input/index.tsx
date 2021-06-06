@@ -2,8 +2,8 @@ import { ForwardedRef, forwardRef, ReactElement, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { InputProps } from "./types";
 import * as S from "./styles";
-import { variants } from "./animations";
 import { Label } from "../Label";
+import Feedback from "../Feedback";
 
 export const Input = forwardRef(function (
   props: InputProps,
@@ -27,16 +27,7 @@ export const Input = forwardRef(function (
         onBlur={(event) => handleBlur(event)}
       />
       <AnimatePresence>
-        {!props.valid && (
-          <S.Error
-            variants={variants}
-            initial="hidden"
-            animate="active"
-            exit="hidden"
-          >
-            {props.error}
-          </S.Error>
-        )}
+        {!props.valid && <Feedback>{props.error}</Feedback>}
       </AnimatePresence>
     </S.InputContainer>
   );

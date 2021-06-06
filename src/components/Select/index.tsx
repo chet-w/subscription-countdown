@@ -1,14 +1,21 @@
-import { ReactElement } from "react";
+import { ForwardedRef, forwardRef, ReactElement } from "react";
+import { AnimatePresence } from "framer-motion";
 import { InputContainer } from "../Input/styles";
 import { SelectProps } from "./types";
 import * as S from "./styles";
 import { Label } from "../Label";
+import Feedback from "../Feedback";
 
-export function Select(props: SelectProps): ReactElement {
+export const Select = forwardRef(function (
+  props: SelectProps,
+  ref: ForwardedRef<HTMLSelectElement>
+): ReactElement {
   return (
     <InputContainer>
-      <Label isActive>{props.label}</Label>
-      <S.Select {...props}>
+      <Label isActive isValid={props.valid}>
+        {props.label}
+      </Label>
+      <S.Select {...props} ref={ref}>
         <option value=""></option>
         {props.options.map(({ value, label }) => (
           <option key={value} value={value}>
@@ -16,6 +23,9 @@ export function Select(props: SelectProps): ReactElement {
           </option>
         ))}
       </S.Select>
+      <AnimatePresence>
+        {!props.valid && <Feedback>{props.error}</Feedback>}
+      </AnimatePresence>
     </InputContainer>
   );
-}
+});
