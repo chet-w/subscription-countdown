@@ -30,7 +30,11 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         valid={!Boolean(errors.name)}
         error="Service name can't be blank"
       />
-      <Select options={OCCURRANCE_OPTIONS} />
+      <Select
+        options={OCCURRANCE_OPTIONS}
+        label="Occurrance"
+        {...register("occurrance", { required: true })}
+      />
       <input type="submit" value="submit" />
     </Form>
   );
