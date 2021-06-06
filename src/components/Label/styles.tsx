@@ -9,7 +9,7 @@ export const Label = styled.label<StyledLabelProps>`
   left: 1rem;
   transition: all 0.2s ease;
   transform: ${(props) =>
-    props.isActive ? "translate3d(-0.5rem, -0.8rem, 0) scale(0.75)" : "none"};
+    props.isActive ? "translate3d(-0.75rem, -0.8rem, 0) scale(0.75)" : "none"};
   color: ${(props) => {
     if (props.isActive && props.isValid) {
       return props.theme.colors.success;
