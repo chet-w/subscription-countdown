@@ -22,6 +22,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         valid={!Boolean(errors.name)}
         error="Service name can't be blank"
       />
+
       <input type="submit" value="submit" />
     </Form>
   );
