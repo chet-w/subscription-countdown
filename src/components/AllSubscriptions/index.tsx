@@ -20,6 +20,7 @@ export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
         {services.map((service) => (
           <Service
             {...service}
+            key={JSON.stringify(service)}
             onClick={() => openModal(<EditServiceModal service={service} />)}
           />
         ))}
