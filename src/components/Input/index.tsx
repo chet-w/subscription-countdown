@@ -1,9 +1,10 @@
 import { ForwardedRef, forwardRef, ReactElement, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import slugify from "slugify";
 import { InputProps } from "./types";
 import * as S from "./styles";
-import { variants } from "./animations";
 import { Label } from "../Label";
+import Feedback from "../Feedback";
 
 export const Input = forwardRef(function (
   props: InputProps,
@@ -17,25 +18,27 @@ export const Input = forwardRef(function (
 
   return (
     <S.InputContainer>
-      <Label isActive={isActive} isValid={props.valid}>
+      <Label
+        isActive={isActive}
+        isValid={props.valid}
+        htmlFor={slugify(props.name)}
+      >
         {props.label}
       </Label>
       <S.Input
         {...props}
+        id={slugify(props.name)}
         ref={ref}
         onFocus={() => setIsActive(true)}
         onBlur={(event) => handleBlur(event)}
+        aria-invalid={!props.valid}
+        aria-describedby={`feedback-${slugify(props.name)}`}
       />
       <AnimatePresence>
         {!props.valid && (
-          <S.Error
-            variants={variants}
-            initial="hidden"
-            animate="active"
-            exit="hidden"
-          >
+          <Feedback id={`feedback-${slugify(props.name)}`}>
             {props.error}
-          </S.Error>
+          </Feedback>
         )}
       </AnimatePresence>
     </S.InputContainer>
