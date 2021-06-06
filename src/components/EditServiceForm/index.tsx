@@ -21,10 +21,12 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Input {...register("firstName", { required: true })} />
-      {/* {errors.firstName && "First name is required"} */}
-      <Input {...register("lastName", { required: true })} />
-      {/* {errors.lastName && "Last name is required"} */}
+      <Input
+        {...register("firstName", { required: true })}
+        valid={Boolean(errors.firstName)}
+        error="First name is required"
+      />
+      <input type="submit" value="submit" />
     </Form>
   );
 }
