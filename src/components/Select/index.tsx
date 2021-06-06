@@ -1,12 +1,16 @@
 import { ReactElement } from "react";
-import Selector from "react-select";
 import { InputContainer } from "../Input/styles";
 import { SelectProps } from "./types";
+import * as S from "./styles";
 
 export function Select(props: SelectProps): ReactElement {
   return (
     <InputContainer>
-      <Selector options={props.options} />
+      <S.Select {...props}>
+        {props.options.map(({ value, label }) => (
+          <option value={value}>{label}</option>
+        ))}
+      </S.Select>
     </InputContainer>
   );
 }
