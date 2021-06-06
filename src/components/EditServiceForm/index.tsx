@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button } from "../Button";
 import { Form } from "../Form";
 import { Input } from "../Input";
 import { EditServiceFormProps } from "./types";
@@ -23,7 +22,8 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
         {...register("firstName", { required: true })}
-        valid={Boolean(errors.firstName)}
+        label="First name"
+        valid={!Boolean(errors.firstName)}
         error="First name is required"
       />
       <input type="submit" value="submit" />

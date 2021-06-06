@@ -10,7 +10,8 @@ export const InputContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   border: none;
   background: ${(props) => props.theme.colors.lightGrey};
