@@ -1,18 +1,23 @@
 import { ReactElement, useState } from "react";
-import DateInput, { DayValue } from "react-modern-calendar-datepicker";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import DateInput from "react-datepicker";
+import slugify from "slugify";
+import "react-datepicker/dist/react-datepicker.css";
+import { Label } from "../Label";
 import * as S from "./styles";
 import { DatepickerProps } from "./types";
 
 export function Datepicker(props: DatepickerProps): ReactElement {
-  const [selectedDay, setSelectedDay] = useState<DayValue>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | [Date, Date]>(
+    new Date()
+  );
   return (
     <S.DatepickerContainer>
+      <Label isActive htmlFor={slugify(props.name)}>
+        {props.label}
+      </Label>
       <DateInput
-        value={selectedDay}
-        onChange={(value) => setSelectedDay(value)}
-        inputPlaceholder="Select a day"
-        shouldHighlightWeekends
+        value={selectedDate.toString()}
+        onChange={(date) => setSelectedDate(date!)}
       />
     </S.DatepickerContainer>
   );

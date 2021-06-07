@@ -43,7 +43,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           name="occurrence"
           options={OCCURRENCE_OPTIONS}
         />
-        <Datepicker />
+        <Datepicker label="Next payment due" name="nextPaymentDue" />
         <button type="submit">Submit</button>
       </Form>
     </Formik>

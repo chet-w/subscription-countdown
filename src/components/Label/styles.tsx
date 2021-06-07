@@ -12,4 +12,5 @@ export const Label = styled.label<StyledLabelProps>`
     props.isActive ? "translate3d(-0.75rem, -0.8rem, 0) scale(0.75)" : "none"};
   color: ${(props) =>
     props.isValid ? props.theme.colors.success : props.theme.colors.danger};
+  z-index: 1;
 `;
