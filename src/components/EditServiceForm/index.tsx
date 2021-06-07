@@ -1,11 +1,9 @@
 import { createContext, ReactElement } from "react";
-import { useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Form, FormProvider } from "../Form";
 import { Input } from "../Input";
 import { Option } from "../Select/types";
 import { EditServiceFormProps } from "./types";
-import { format } from "date-fns";
 
 const occurrence_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -14,17 +12,8 @@ const occurrence_OPTIONS: Option[] = [
 ];
 
 export function EditServiceForm(props: EditServiceFormProps): ReactElement {
-  const formik = useFormik({
-    initialValues: {
-      ...props.service
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
-
   return (
-    <FormProvider
+    <Formik
       initialValues={props.service}
       validationSchema={Yup.object({
         name: Yup.string().required("Service needs to have a name"),
@@ -45,17 +34,11 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         }, 400);
       }}
     >
-      {(formik: any) => (
-        <Form onSubmit={formik.handleSubmit}>
-          <Input
-            label="Service name"
-            name="name"
-            {...formik.getFieldProps("name")}
-          />
-          {/* <Select options={occurrence_OPTIONS} label="occurrence" /> */}
-          <button type="submit">Submit</button>
-        </Form>
-      )}
-    </FormProvider>
+      {/* // <Form onSubmit={formik.handleSubmit}> */}
+      <Form>
+        <Field label="Service name" name="name" component={Input} />
+        <button type="submit">Submit</button>
+      </Form>
+    </Formik>
   );
 }
