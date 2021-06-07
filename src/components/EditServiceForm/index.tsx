@@ -1,43 +1,49 @@
 import { ReactElement } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { Form } from "../Form";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
 import { Input } from "../Input";
-import { Select } from "../Select";
 import { Option } from "../Select/types";
-import { EditServiceFormInputs, EditServiceFormProps } from "./types";
+import { EditServiceFormProps } from "./types";
+import { Select } from "../Select";
 
-const OCCURRANCE_OPTIONS: Option[] = [
+const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
   { label: "Monthly", value: "monthly" },
   { label: "Yearly", value: "yearly" }
 ];
 
 export function EditServiceForm(props: EditServiceFormProps): ReactElement {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit
-  } = useForm<EditServiceFormInputs>({ mode: "all" });
-
-  const onSubmit: SubmitHandler<EditServiceFormInputs> = (data) =>
-    console.log(data);
-
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        {...register("name", { required: true })}
-        label="Service name"
-        valid={!Boolean(errors.name)}
-        error="Service name can't be blank"
-      />
-      <Select
-        {...register("occurrance", { required: true })}
-        options={OCCURRANCE_OPTIONS}
-        label="Occurrance"
-        valid={!Boolean(errors.occurrance)}
-        error="Occurrance can't be blank"
-      />
-      <input type="submit" value="submit" />
-    </Form>
+    <Formik
+      initialValues={props.service}
+      validationSchema={Yup.object({
+        name: Yup.string().required("Service needs to have a name"),
+        amount: Yup.number()
+          .min(1, "Service amount needs to be at least $1.00")
+          .required("Service needs to have an amount"),
+        occurrence: Yup.string().required(
+          "Service needs to have an occurrence selected"
+        ),
+        nextPaymentDue: Yup.date().required(
+          "Service needs a due date for the next payment"
+        )
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      <Form>
+        <Input label="Service name" name="name" />
+        <Select
+          label="Occurrence"
+          name="occurrence"
+          options={OCCURRENCE_OPTIONS}
+        />
+        <button type="submit">Submit</button>
+      </Form>
+    </Formik>
   );
 }

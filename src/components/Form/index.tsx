@@ -4,10 +4,9 @@ import * as S from "./styles";
 
 export function Form(props: FormProps): ReactElement {
   const { children, ...otherProps } = props;
-
   return (
     <S.Form {...otherProps}>
-      <>{children}</>
+      <>{props.children}</>
     </S.Form>
   );
 }

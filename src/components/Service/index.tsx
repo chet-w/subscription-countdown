@@ -6,9 +6,9 @@ import { ServiceProps } from "./types";
 import * as S from "./styles";
 
 const badgeVariant = (
-  occurrance: "weekly" | "monthly" | "yearly"
+  occurrence: "weekly" | "monthly" | "yearly"
 ): "success" | "warning" | "danger" => {
-  switch (occurrance) {
+  switch (occurrence) {
     case "weekly":
       return "success";
     case "monthly":
@@ -29,8 +29,8 @@ export function Service(props: ServiceProps): ReactElement {
       <S.SpacedBetweenRow>
         <Heading level="3">{props.name}</Heading>
         <Badge
-          variant={badgeVariant(props.occurrance)}
-          content={props.occurrance}
+          variant={badgeVariant(props.occurrence)}
+          content={props.occurrence}
         />
       </S.SpacedBetweenRow>
       <S.SpacedBetweenRow>

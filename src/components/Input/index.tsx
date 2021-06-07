@@ -1,4 +1,5 @@
-import { ForwardedRef, forwardRef, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
+import { useField } from "formik";
 import { AnimatePresence } from "framer-motion";
 import slugify from "slugify";
 import { InputProps } from "./types";
@@ -6,41 +7,42 @@ import * as S from "./styles";
 import { Label } from "../Label";
 import Feedback from "../Feedback";
 
-export const Input = forwardRef(function (
-  props: InputProps,
-  ref: ForwardedRef<HTMLInputElement>
-): ReactElement {
-  const [isActive, setIsActive] = useState(false);
+export function Input(props: InputProps): ReactElement {
+  const { label, ...otherProps } = props;
+
+  const [field, meta] = useField(otherProps);
+  const [isActive, setIsActive] = useState(Boolean(field.value));
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setIsActive(Boolean(event.target.value !== ""));
+    field.onBlur(event);
   };
 
   return (
     <S.InputContainer>
       <Label
         isActive={isActive}
-        isValid={props.valid}
+        isValid={!Boolean(meta.error)}
         htmlFor={slugify(props.name)}
       >
-        {props.label}
+        {label}
       </Label>
       <S.Input
-        {...props}
+        {...field}
+        {...otherProps}
         id={slugify(props.name)}
-        ref={ref}
         onFocus={() => setIsActive(true)}
         onBlur={(event) => handleBlur(event)}
-        aria-invalid={!props.valid}
+        aria-invalid={meta.touched && meta.error ? true : false}
         aria-describedby={`feedback-${slugify(props.name)}`}
       />
       <AnimatePresence>
-        {!props.valid && (
+        {meta.touched && meta.error && (
           <Feedback id={`feedback-${slugify(props.name)}`}>
-            {props.error}
+            {meta.error}
           </Feedback>
         )}
       </AnimatePresence>
     </S.InputContainer>
   );
-});
+}
