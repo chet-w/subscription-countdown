@@ -1,5 +1,5 @@
-import { createContext, ReactElement } from "react";
-import { Field, Form, Formik } from "formik";
+import { ReactElement } from "react";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../Input";
 import { Option } from "../Select/types";
@@ -34,9 +34,8 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         }, 400);
       }}
     >
-      {/* // <Form onSubmit={formik.handleSubmit}> */}
       <Form>
-        <Field label="Service name" name="name" component={Input} />
+        <Input label="Service name" name="name" />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
