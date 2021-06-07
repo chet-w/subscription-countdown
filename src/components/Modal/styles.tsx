@@ -18,13 +18,12 @@ export const Header = styled.header`
 `;
 
 export const Body = styled.section`
-  padding: 0 2rem;
-`;
+  padding: 0 2rem 2rem 2rem;
+  height: 100%;
 
-export const Footer = styled.footer`
-  padding: 2rem;
-  margin-top: auto;
-  border-radius: 0 0 1rem 1rem;
-  display: flex;
-  justify-content: flex-end;
+  & form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 `;

@@ -6,6 +6,7 @@ import { Option } from "../Select/types";
 import { EditServiceFormProps } from "./types";
 import { Select } from "../Select";
 import { Datepicker } from "../Datepicker";
+import { FormButtons } from "../FormButtons";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -44,7 +45,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           options={OCCURRENCE_OPTIONS}
         />
         <Datepicker label="Next payment due" name="nextPaymentDue" />
-        <button type="submit">Submit</button>
+        <FormButtons />
       </Form>
     </Formik>
   );
