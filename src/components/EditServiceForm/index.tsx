@@ -7,6 +7,7 @@ import { EditServiceFormProps } from "./types";
 import { Select } from "../Select";
 import { Datepicker } from "../Datepicker";
 import { FormButtons } from "../FormButtons";
+import { useService } from "../../hooks/useService";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -15,6 +16,8 @@ const OCCURRENCE_OPTIONS: Option[] = [
 ];
 
 export function EditServiceForm(props: EditServiceFormProps): ReactElement {
+  const { updateService } = useService(props.service.id);
+
   return (
     <Formik
       initialValues={props.service}
@@ -31,10 +34,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           .min(new Date(), "Service due date can't be in the past")
       })}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        updateService(values);
       }}
     >
       <Form>
