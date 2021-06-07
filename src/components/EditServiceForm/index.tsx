@@ -4,8 +4,9 @@ import * as Yup from "yup";
 import { Input } from "../Input";
 import { Option } from "../Select/types";
 import { EditServiceFormProps } from "./types";
+import { Select } from "../Select";
 
-const occurrence_OPTIONS: Option[] = [
+const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
   { label: "Monthly", value: "monthly" },
   { label: "Yearly", value: "yearly" }
@@ -36,6 +37,11 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
     >
       <Form>
         <Input label="Service name" name="name" />
+        <Select
+          label="Occurrence"
+          name="occurrence"
+          options={OCCURRENCE_OPTIONS}
+        />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
