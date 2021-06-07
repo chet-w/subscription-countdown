@@ -5,6 +5,7 @@ import { Input } from "../Input";
 import { Option } from "../Select/types";
 import { EditServiceFormProps } from "./types";
 import { Select } from "../Select";
+import { Datepicker } from "../Datepicker";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -24,9 +25,9 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         occurrence: Yup.string().required(
           "Service needs to have an occurrence selected"
         ),
-        nextPaymentDue: Yup.date().required(
-          "Service needs a due date for the next payment"
-        )
+        nextPaymentDue: Yup.date()
+          .required("Service needs a due date for the next payment")
+          .min(new Date(), "Service due date can't be in the past")
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -42,6 +43,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           name="occurrence"
           options={OCCURRENCE_OPTIONS}
         />
+        <Datepicker label="Next payment due" name="nextPaymentDue" />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
