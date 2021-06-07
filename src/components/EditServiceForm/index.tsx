@@ -23,7 +23,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
 
   return (
     <Form
-      initialValues={...props.service}
+      initialValues={props.service}
       validationSchema={Yup.object({
         name: Yup.string().required("Required"),
         amount: Yup.string()
