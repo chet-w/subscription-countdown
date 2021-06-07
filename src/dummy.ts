@@ -1,6 +1,6 @@
 import { Service } from "./types/Service";
 
-export const data: Service[] = [
+export const dummy: Service[] = [
   {
     name: "Amazon Prime Video",
     image:
