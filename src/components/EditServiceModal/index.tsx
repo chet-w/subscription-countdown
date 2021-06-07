@@ -16,7 +16,7 @@ export function EditServiceModal(props: EditServiceModalProps): ReactElement {
         { text: "UpdateService", onClick: () => closeModal() }
       ]}
     >
-      <EditServiceForm />
+      <EditServiceForm service={props.service} />
     </Modal>
   );
 }

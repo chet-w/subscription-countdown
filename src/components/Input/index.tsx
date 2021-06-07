@@ -6,10 +6,7 @@ import * as S from "./styles";
 import { Label } from "../Label";
 import Feedback from "../Feedback";
 
-export const Input = forwardRef(function (
-  props: InputProps,
-  ref: ForwardedRef<HTMLInputElement>
-): ReactElement {
+export function Input(props: InputProps): ReactElement {
   const [isActive, setIsActive] = useState(false);
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -28,7 +25,6 @@ export const Input = forwardRef(function (
       <S.Input
         {...props}
         id={slugify(props.name)}
-        ref={ref}
         onFocus={() => setIsActive(true)}
         onBlur={(event) => handleBlur(event)}
         aria-invalid={!props.valid}
@@ -43,4 +39,4 @@ export const Input = forwardRef(function (
       </AnimatePresence>
     </S.InputContainer>
   );
-});
+}
