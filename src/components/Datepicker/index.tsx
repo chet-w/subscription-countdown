@@ -6,6 +6,7 @@ import { Label } from "../Label";
 import * as S from "./styles";
 import { DatepickerProps } from "./types";
 import Feedback from "../Feedback";
+import { format } from "date-fns";
 
 export function Datepicker(props: DatepickerProps): ReactElement {
   const { label, ...otherProps } = props;
@@ -21,7 +22,13 @@ export function Datepicker(props: DatepickerProps): ReactElement {
       >
         {label}
       </Label>
-      <input type="date" {...field} {...otherProps} id={slugify(props.name)} />
+      <input
+        type="date"
+        {...field}
+        value={format(new Date(field.value), "yyyy-MM-dd")}
+        {...otherProps}
+        id={slugify(props.name)}
+      />
       <AnimatePresence>
         {meta.touched && meta.error && (
           <Feedback id={`feedback-${slugify(props.name)}`}>
