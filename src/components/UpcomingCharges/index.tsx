@@ -36,6 +36,7 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
       <Heading level="2">Upcoming Charges</Heading>
       <S.ContentWrapper>
         <Service
+          id={0}
           name="Apple Music"
           image="https://www.apple.com/v/apple-music/p/images/overview/icon_apple_music__v9epn6m1oj6u_large_2x.png"
           amount={9.99}
