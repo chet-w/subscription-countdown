@@ -25,9 +25,9 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         occurrence: Yup.string().required(
           "Service needs to have an occurrence selected"
         ),
-        nextPaymentDue: Yup.date().required(
-          "Service needs a due date for the next payment"
-        )
+        nextPaymentDue: Yup.date()
+          .required("Service needs a due date for the next payment")
+          .min(new Date(), "Service due date can't be in the past")
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
