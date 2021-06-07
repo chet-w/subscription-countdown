@@ -1,17 +1,15 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { AllSubscriptionProps } from "./types";
 import * as S from "./styles";
 import { Heading } from "../Heading";
 import { Service } from "../Service";
-import { Service as ServiceType } from "../../types/Service";
-import { data } from "../../dummy";
 import { useModal } from "../../providers/ModalProvider";
 import { EditServiceModal } from "../EditServiceModal";
+import { useServices } from "../../hooks/useServices";
 
 export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
-  // @ts-ignore
-  const [services] = useState<ServiceType[]>(data);
   const { openModal } = useModal();
+  const services = useServices();
 
   return (
     <S.Section>
@@ -21,7 +19,9 @@ export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
           <Service
             {...service}
             key={JSON.stringify(service)}
-            onClick={() => openModal(<EditServiceModal service={service} />)}
+            onClick={() =>
+              openModal(<EditServiceModal serviceId={service.id} />)
+            }
           />
         ))}
       </S.ServiceContainer>
