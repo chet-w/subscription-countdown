@@ -39,7 +39,7 @@ export function UpcomingCharges(props: UpcomingChargesProps): ReactElement {
           name="Apple Music"
           image="https://www.apple.com/v/apple-music/p/images/overview/icon_apple_music__v9epn6m1oj6u_large_2x.png"
           amount={9.99}
-          occurrance="monthly"
+          occurrence="monthly"
           nextPaymentDue={
             "Sun Jun 20 2021 15:15:52 GMT+1200 (New Zealand Standard Time)"
           }

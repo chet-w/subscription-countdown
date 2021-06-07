@@ -2,6 +2,6 @@ export interface Service {
   name: string;
   image: string;
   amount: number;
-  occurrance: "weekly" | "monthly" | "yearly";
+  occurrence: "weekly" | "monthly" | "yearly";
   nextPaymentDue: string;
 }

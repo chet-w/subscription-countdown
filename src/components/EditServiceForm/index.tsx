@@ -1,11 +1,13 @@
 import { createContext, ReactElement } from "react";
 import { useFormik } from "formik";
-import { Form } from "../Form";
+import * as Yup from "yup";
+import { Form, FormProvider } from "../Form";
 import { Input } from "../Input";
 import { Option } from "../Select/types";
 import { EditServiceFormProps } from "./types";
+import { format } from "date-fns";
 
-const OCCURRANCE_OPTIONS: Option[] = [
+const occurrence_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
   { label: "Monthly", value: "monthly" },
   { label: "Yearly", value: "yearly" }
@@ -22,14 +24,19 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
   });
 
   return (
-    <Form
+    <FormProvider
       initialValues={props.service}
       validationSchema={Yup.object({
-        name: Yup.string().required("Required"),
-        amount: Yup.string()
-          .max(20, "Must be 20 characters or less")
-          .required("Required"),
-        email: Yup.string().email("Invalid email address").required("Required")
+        name: Yup.string().required("Service needs to have a name"),
+        amount: Yup.number()
+          .min(1, "Service amount needs to be at least $1.00")
+          .required("Service needs to have an amount"),
+        occurrence: Yup.string().required(
+          "Service needs to have an occurrence selected"
+        ),
+        nextPaymentDue: Yup.date().required(
+          "Service needs a due date for the next payment"
+        )
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -38,14 +45,17 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
         }, 400);
       }}
     >
-      <Input
-        label="Service name"
-        name="name"
-        onChange={formik.handleChange}
-        value={formik.values.name}
-      />
-      {/* <Select options={OCCURRANCE_OPTIONS} label="Occurrance" /> */}
-      <input type="submit" value="submit" />
-    </Form>
+      {(formik: any) => (
+        <Form onSubmit={formik.handleSubmit}>
+          <Input
+            label="Service name"
+            name="name"
+            {...formik.getFieldProps("name")}
+          />
+          {/* <Select options={occurrence_OPTIONS} label="occurrence" /> */}
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </FormProvider>
   );
 }
