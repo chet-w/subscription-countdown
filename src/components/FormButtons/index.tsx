@@ -9,7 +9,7 @@ export function FormButtons(props: FormButtonsProps): ReactElement {
 
   return (
     <S.FormButtons>
-      <Button variant="tertiary" onClick={() => closeModal()}>
+      <Button variant="tertiary" onClick={() => closeModal()} type="button">
         Cancel
       </Button>
       <Button variant="primary" type="submit">
