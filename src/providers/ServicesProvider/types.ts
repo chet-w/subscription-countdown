@@ -7,4 +7,5 @@ export interface ServicesProviderProps {
 
 export interface ServicesContextValues {
   services: Service[];
+  setServices: React.Dispatch<React.SetStateAction<Service[]>>;
 }

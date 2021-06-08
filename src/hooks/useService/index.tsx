@@ -2,9 +2,23 @@ import { useEffect, useState } from "react";
 import { mapKeys, camelCase, snakeCase } from "lodash";
 import { Service } from "../../types/Service";
 import { UseServiceType } from "./types";
+import { useServices } from "../../providers/ServicesProvider";
 
 export function useService(id: number): UseServiceType {
   const [service, setService] = useState<Service | null>(null);
+
+  const { services, setServices } = useServices();
+
+  const updateServiceInContext = (serviceData: Service) => {
+    const withUpdateValue = services.map((srv) => {
+      if (srv.id === serviceData.id) {
+        return serviceData;
+      }
+      return srv;
+    });
+
+    setServices(withUpdateValue);
+  };
 
   const updateService = async (serviceData: Service) => {
     const { id, ...params } = serviceData;
@@ -15,19 +29,25 @@ export function useService(id: number): UseServiceType {
       (_, k) => snakeCase(k)
     );
 
-    const res = await fetch(`http://localhost:3000/services/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        service: {
-          ...formattedParams
+    try {
+      const res = await fetch(`http://localhost:3000/services/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          service: {
+            ...formattedParams
+          }
+        }),
+        headers: {
+          "Content-Type": "application/json"
         }
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    const data = await res.json();
-    return data;
+      });
+      const data = await res.json();
+      updateServiceInContext(serviceData);
+
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

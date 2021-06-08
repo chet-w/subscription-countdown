@@ -30,7 +30,7 @@ export function ServicesProvider(props: ServicesProviderProps): ReactElement {
   }, []);
 
   return (
-    <ServicesContext.Provider value={{ services }}>
+    <ServicesContext.Provider value={{ services, setServices }}>
       {props.children}
     </ServicesContext.Provider>
   );
