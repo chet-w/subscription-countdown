@@ -35,7 +35,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           .required("Service needs a due date for the next payment")
           .min(new Date(), "Service due date can't be in the past")
       })}
-      onSubmit={async (values, { setSubmitting }) => {
+      onSubmit={async (values) => {
         await updateService(values);
         closeModal();
       }}
