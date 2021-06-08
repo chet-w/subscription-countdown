@@ -9,7 +9,7 @@ export function EditServiceModal(
   props: EditServiceModalProps
 ): ReactElement | null {
   const { closeModal } = useModal();
-  const service = useService(props.serviceId);
+  const { service } = useService(props.serviceId);
 
   return service ? (
     <Modal

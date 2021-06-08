@@ -5,11 +5,11 @@ import { Heading } from "../Heading";
 import { Service } from "../Service";
 import { useModal } from "../../providers/ModalProvider";
 import { EditServiceModal } from "../EditServiceModal";
-import { useServices } from "../../hooks/useServices";
+import { useServices } from "../../providers/ServicesProvider";
 
 export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
   const { openModal } = useModal();
-  const services = useServices();
+  const { services } = useServices();
 
   return (
     <S.Section>

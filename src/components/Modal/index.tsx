@@ -2,12 +2,9 @@ import { ReactElement, useRef } from "react";
 import { ModalProps } from "./types";
 import * as S from "./styles";
 import { variants, transition } from "./animations";
-import { useModal } from "../../providers/ModalProvider";
-import { Button } from "../Button";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
 
 export function Modal(props: ModalProps): ReactElement {
-  const { closeModal } = useModal();
   const ModalRef = useRef<HTMLElement>(null!);
   useFocusTrap(ModalRef);
 
@@ -30,12 +27,6 @@ export function Modal(props: ModalProps): ReactElement {
         </h4>
       </S.Header>
       <S.Body>{props.children}</S.Body>
-      <S.Footer>
-        <Button variant="tertiary" onClick={() => closeModal()}>
-          Cancel
-        </Button>
-        <Button variant="primary">Update Service</Button>
-      </S.Footer>
     </S.Modal>
   );
 }

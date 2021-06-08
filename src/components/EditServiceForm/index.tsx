@@ -6,6 +6,9 @@ import { Option } from "../Select/types";
 import { EditServiceFormProps } from "./types";
 import { Select } from "../Select";
 import { Datepicker } from "../Datepicker";
+import { FormButtons } from "../FormButtons";
+import { useService } from "../../hooks/useService";
+import { useModal } from "../../providers/ModalProvider";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -14,6 +17,9 @@ const OCCURRENCE_OPTIONS: Option[] = [
 ];
 
 export function EditServiceForm(props: EditServiceFormProps): ReactElement {
+  const { updateService } = useService(props.service.id);
+  const { closeModal } = useModal();
+
   return (
     <Formik
       initialValues={props.service}
@@ -29,11 +35,9 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           .required("Service needs a due date for the next payment")
           .min(new Date(), "Service due date can't be in the past")
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={async (values) => {
+        await updateService(values);
+        closeModal();
       }}
     >
       <Form>
@@ -44,7 +48,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           options={OCCURRENCE_OPTIONS}
         />
         <Datepicker label="Next payment due" name="nextPaymentDue" />
-        <button type="submit">Submit</button>
+        <FormButtons />
       </Form>
     </Formik>
   );
