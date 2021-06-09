@@ -9,6 +9,7 @@ import { Datepicker } from "../Datepicker";
 import { FormButtons } from "../FormButtons";
 import { useService } from "../../hooks/useService";
 import { useModal } from "../../providers/ModalProvider";
+import { Service } from "../../types/Service";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -16,13 +17,21 @@ const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Yearly", value: "yearly" }
 ];
 
+const INITIAL_SERVICE_VALUES: Service = {
+  name: "",
+  amount: 0,
+  image: "",
+  nextPaymentDue: "",
+  occurrence: "weekly"
+};
+
 export function ServiceForm(props: ServiceFormProps): ReactElement {
-  const { updateService } = useService(props.service.id);
+  const { updateService, createService } = useService(props?.service?.id);
   const { closeModal } = useModal();
 
   return (
     <Formik
-      initialValues={props.service}
+      initialValues={props.service || INITIAL_SERVICE_VALUES}
       validationSchema={Yup.object({
         name: Yup.string().required("Service needs to have a name"),
         amount: Yup.number()

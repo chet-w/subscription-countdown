@@ -1,5 +1,5 @@
 export interface Service {
-  id: number;
+  id?: number;
   name: string;
   image: string;
   amount: number;

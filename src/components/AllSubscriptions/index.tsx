@@ -30,7 +30,7 @@ export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
             {...service}
             key={JSON.stringify(service)}
             onClick={() =>
-              openModal(<EditServiceModal serviceId={service.id} />)
+              openModal(<EditServiceModal serviceId={service.id!} />)
             }
           />
         ))}
