@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { useService } from "../../hooks/useService";
-import { EditServiceForm } from "../EditServiceForm";
+import { ServiceForm } from "../ServiceForm";
 import { Modal } from "../Modal";
 import { EditServiceModalProps } from "./types";
 
@@ -14,7 +14,7 @@ export function EditServiceModal(
       id={`edit-${service.name.replace(/\s/g, "-")}`}
       title={`Edit ${service.name}`}
     >
-      <EditServiceForm service={service} />
+      <ServiceForm service={service} />
     </Modal>
   ) : null;
 }

@@ -3,7 +3,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../Input";
 import { Option } from "../Select/types";
-import { EditServiceFormProps } from "./types";
+import { ServiceFormProps } from "./types";
 import { Select } from "../Select";
 import { Datepicker } from "../Datepicker";
 import { FormButtons } from "../FormButtons";
@@ -16,7 +16,7 @@ const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Yearly", value: "yearly" }
 ];
 
-export function EditServiceForm(props: EditServiceFormProps): ReactElement {
+export function ServiceForm(props: ServiceFormProps): ReactElement {
   const { updateService } = useService(props.service.id);
   const { closeModal } = useModal();
 
