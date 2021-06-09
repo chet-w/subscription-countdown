@@ -17,3 +17,14 @@ export const ServiceContainer = styled.div`
     margin-bottom: 4rem;
   }
 `;
+
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  & h2 {
+    margin: 0;
+  }
+`;
