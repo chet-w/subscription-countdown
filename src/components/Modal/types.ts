@@ -4,7 +4,6 @@ export interface ModalProps {
   title: string;
   id: string;
   children: ReactElement | ReactElement[];
-  footerOptions: FooterOption[];
 }
 
 export interface FooterOption extends HTMLAttributes<HTMLButtonElement> {
