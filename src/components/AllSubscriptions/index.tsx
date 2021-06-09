@@ -7,6 +7,7 @@ import { useModal } from "../../providers/ModalProvider";
 import { EditServiceModal } from "../EditServiceModal";
 import { useServices } from "../../providers/ServicesProvider";
 import { Button } from "../Button";
+import { NewServiceModal } from "../NewServiceModal";
 
 export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
   const { openModal } = useModal();
@@ -16,7 +17,12 @@ export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
     <S.Section>
       <S.Header>
         <Heading level="2">All Subscriptions</Heading>
-        <Button variant="primary">New Service</Button>
+        <Button
+          variant="primary"
+          onClick={() => openModal(<NewServiceModal />)}
+        >
+          New Service
+        </Button>
       </S.Header>
       <S.ServiceContainer>
         {services.map((service) => (
