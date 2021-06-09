@@ -76,7 +76,7 @@ export function useService(id?: number): UseServiceType {
         }
       });
       const data = await res.json();
-      addServiceToContext(serviceData);
+      addServiceToContext({ ...serviceData, id: data.id });
 
       return data;
     } catch (error) {

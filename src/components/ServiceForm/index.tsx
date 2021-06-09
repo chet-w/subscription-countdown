@@ -19,7 +19,7 @@ const OCCURRENCE_OPTIONS: Option[] = [
 
 const INITIAL_SERVICE_VALUES: Service = {
   name: "",
-  amount: 0,
+  amount: 1,
   image: "",
   nextPaymentDue: "",
   occurrence: "weekly"
@@ -45,7 +45,12 @@ export function ServiceForm(props: ServiceFormProps): ReactElement {
           .min(new Date(), "Service due date can't be in the past")
       })}
       onSubmit={async (values) => {
-        await updateService(values);
+        console.log(values);
+        if (props.service) {
+          await updateService(values);
+        } else {
+          await createService(values);
+        }
         closeModal();
       }}
     >
