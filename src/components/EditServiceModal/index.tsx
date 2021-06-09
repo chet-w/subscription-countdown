@@ -14,7 +14,10 @@ export function EditServiceModal(
       id={`edit-${service.name.replace(/\s/g, "-")}`}
       title={`Edit ${service.name}`}
     >
-      <ServiceForm service={service} />
+      <ServiceForm
+        service={service}
+        formButtonLabels={["Cancel", "Save Service"]}
+      />
     </Modal>
   ) : null;
 }

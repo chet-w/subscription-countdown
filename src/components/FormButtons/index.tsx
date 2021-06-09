@@ -6,14 +6,15 @@ import { useModal } from "../../providers/ModalProvider";
 
 export function FormButtons(props: FormButtonsProps): ReactElement {
   const { closeModal } = useModal();
+  const [first, second] = props.labels;
 
   return (
     <S.FormButtons>
       <Button variant="tertiary" onClick={() => closeModal()} type="button">
-        Cancel
+        {first}
       </Button>
       <Button variant="primary" type="submit">
-        Save Service
+        {second}
       </Button>
     </S.FormButtons>
   );

@@ -9,7 +9,7 @@ export function NewServiceModal(props: NewServiceModalProps): ReactElement {
 
   return (
     <Modal id="new-service" title="New Service">
-      <ServiceForm />
+      <ServiceForm formButtonLabels={["Cancel", "Create Service"]} />
     </Modal>
   );
 }

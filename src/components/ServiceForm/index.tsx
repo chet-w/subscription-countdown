@@ -57,7 +57,7 @@ export function ServiceForm(props: ServiceFormProps): ReactElement {
           options={OCCURRENCE_OPTIONS}
         />
         <Datepicker label="Next payment due" name="nextPaymentDue" />
-        <FormButtons />
+        <FormButtons labels={props.formButtonLabels} />
       </Form>
     </Formik>
   );
