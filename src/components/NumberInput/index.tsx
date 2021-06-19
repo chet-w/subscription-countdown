@@ -16,7 +16,7 @@ export function NumberInput(props: NumberInputProps): ReactElement {
 
   const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    const formattedValue = value.replaceAll(",", "") || "0";
+    const formattedValue = value.replaceAll(/[,$]/g, "") || "0";
     event.target.value = formattedValue;
     handleChange(event);
   };
@@ -31,7 +31,11 @@ export function NumberInput(props: NumberInputProps): ReactElement {
         {label}
       </Label>
       <S.NumberInput
-        options={{ numeral: true, numeralThousandsGroupStyle: "thousand" }}
+        options={{
+          numeral: true,
+          numeralThousandsGroupStyle: "thousand",
+          prefix: "$"
+        }}
         {...field}
         value={field.value}
         {...otherProps}
