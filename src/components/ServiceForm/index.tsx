@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../Input";
+import { NumberInput } from "../NumberInput";
 import { Option } from "../Select/types";
 import { ServiceFormProps } from "./types";
 import { Select } from "../Select";
@@ -56,6 +57,7 @@ export function ServiceForm(props: ServiceFormProps): ReactElement {
     >
       <Form>
         <Input label="Service name" name="name" />
+        <NumberInput label="Payment amount" name="amount" />
         <Select
           label="Occurrence"
           name="occurrence"
