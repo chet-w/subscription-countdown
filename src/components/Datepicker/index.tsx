@@ -25,7 +25,7 @@ export function Datepicker(props: DatepickerProps): ReactElement {
       <input
         type="date"
         {...field}
-        value={format(new Date(field.value), "yyyy-MM-dd")}
+        value={field.value ? format(new Date(field.value), "yyyy-MM-dd") : ""}
         {...otherProps}
         id={slugify(props.name)}
       />

@@ -3,12 +3,13 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../Input";
 import { Option } from "../Select/types";
-import { EditServiceFormProps } from "./types";
+import { ServiceFormProps } from "./types";
 import { Select } from "../Select";
 import { Datepicker } from "../Datepicker";
 import { FormButtons } from "../FormButtons";
 import { useService } from "../../hooks/useService";
 import { useModal } from "../../providers/ModalProvider";
+import { Service } from "../../types/Service";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -16,13 +17,21 @@ const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Yearly", value: "yearly" }
 ];
 
-export function EditServiceForm(props: EditServiceFormProps): ReactElement {
-  const { updateService } = useService(props.service.id);
+const INITIAL_SERVICE_VALUES: Service = {
+  name: "",
+  amount: 1,
+  image: "",
+  nextPaymentDue: "",
+  occurrence: "weekly"
+};
+
+export function ServiceForm(props: ServiceFormProps): ReactElement {
+  const { updateService, createService } = useService(props?.service?.id);
   const { closeModal } = useModal();
 
   return (
     <Formik
-      initialValues={props.service}
+      initialValues={props.service || INITIAL_SERVICE_VALUES}
       validationSchema={Yup.object({
         name: Yup.string().required("Service needs to have a name"),
         amount: Yup.number()
@@ -36,7 +45,12 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           .min(new Date(), "Service due date can't be in the past")
       })}
       onSubmit={async (values) => {
-        await updateService(values);
+        console.log(values);
+        if (props.service) {
+          await updateService(values);
+        } else {
+          await createService(values);
+        }
         closeModal();
       }}
     >
@@ -48,7 +62,7 @@ export function EditServiceForm(props: EditServiceFormProps): ReactElement {
           options={OCCURRENCE_OPTIONS}
         />
         <Datepicker label="Next payment due" name="nextPaymentDue" />
-        <FormButtons />
+        <FormButtons labels={props.formButtonLabels} />
       </Form>
     </Formik>
   );
