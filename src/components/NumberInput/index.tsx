@@ -1,11 +1,10 @@
-import Cleave from "cleave.js/react";
+import slugify from "slugify";
+import { ReactElement } from "react";
 import { useField } from "formik";
 import { AnimatePresence } from "framer-motion";
-import { ReactElement } from "react";
-import slugify from "slugify";
-import Feedback from "../Feedback";
 import { InputContainer } from "../Input/styles";
 import { Label } from "../Label";
+import Feedback from "../Feedback";
 import { NumberInputProps } from "./types";
 import * as S from "./styles";
 
