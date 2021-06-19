@@ -6,9 +6,10 @@ import slugify from "slugify";
 import Feedback from "../Feedback";
 import { InputContainer } from "../Input/styles";
 import { Label } from "../Label";
-import { NumberProps } from "./types";
+import { NumberInputProps } from "./types";
+import * as S from "./styles";
 
-export function Number(props: NumberProps): ReactElement {
+export function NumberInput(props: NumberInputProps): ReactElement {
   const { label, ...otherProps } = props;
 
   const [field, meta] = useField(otherProps);
@@ -22,7 +23,7 @@ export function Number(props: NumberProps): ReactElement {
       >
         {label}
       </Label>
-      <Cleave
+      <S.NumberInput
         options={{ numeral: true, numeralThousandsGroupStyle: "thousand" }}
         {...field}
         value={field.value}
