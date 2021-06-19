@@ -36,7 +36,10 @@ export function Service(props: ServiceProps): ReactElement {
       <S.SpacedBetweenRow>
         <S.Image src={props.image} />
         <div style={{ textAlign: "right" }}>
-          <Heading level="3">{`$${Number(props.amount).toFixed(2)}`}</Heading>
+          <Heading level="3">{`$${Number(props.amount).toLocaleString("en-US", {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2
+          })}`}</Heading>
           <b>Next payment due</b>
           <div>{nextPaymentDate}</div>
         </div>
