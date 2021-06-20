@@ -1,3 +1,6 @@
-import { Notification } from "../../providers/NotificationProvider/types";
+import { NotificationVariant } from "../../providers/NotificationProvider/types";
 
-export interface NotificationProps extends Notification { };
+export interface NotificationProps {
+  message: string;
+  variant: NotificationVariant;
+};
