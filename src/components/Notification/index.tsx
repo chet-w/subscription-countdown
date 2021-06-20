@@ -7,6 +7,7 @@ export function Notification(props: NotificationProps): ReactElement {
   return (
     <S.Notification
       variants={variants}
+      variant={props.variant}
       transition={transition}
       initial="hidden"
       animate="active"

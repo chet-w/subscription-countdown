@@ -2,11 +2,11 @@ import { Variants, Transition } from "framer-motion";
 
 export const variants: Variants = {
   hidden: {
-    y: 300,
+    x: -300,
     opacity: 0
   },
   active: {
-    y: 0,
+    x: 0,
     opacity: 1
   }
 };

@@ -22,11 +22,11 @@ export function NotificationProvider(
     useState<NotificationType | null>(null);
 
   useEffect(() => {
-    if (notifiction) {
-      setTimeout(() => {
-        setNotification(null);
-      }, notifiction.duration || 3000);
-    }
+    // if (notifiction) {
+    //   setTimeout(() => {
+    //     setNotification(null);
+    //   }, notifiction.duration || 3000);
+    // }
   }, [notifiction]);
 
   const success = (message: string, duration?: number) => {
