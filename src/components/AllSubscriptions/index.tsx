@@ -8,10 +8,12 @@ import { EditServiceModal } from "../EditServiceModal";
 import { useServices } from "../../providers/ServicesProvider";
 import { Button } from "../Button";
 import { NewServiceModal } from "../NewServiceModal";
+import { useNotification } from "../../providers/NotificationProvider";
 
 export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
   const { openModal } = useModal();
   const { services } = useServices();
+  const notification = useNotification();
 
   return (
     <S.Section>
@@ -24,6 +26,9 @@ export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
           New Service
         </Button>
       </S.Header>
+      <Button variant="secondary" onClick={() => notification.success("yes!")}>
+        Notification
+      </Button>
       <S.ServiceContainer>
         {services.map((service) => (
           <Service
