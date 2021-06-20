@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const Modal = styled(motion.article)`
   width: 600px;
-  height: 480px;
+  min-height: 480px;
   border-radius: 1rem;
   background: ${(props) => props.theme.colors.white};
   box-shadow: ${(props) => props.theme.styles.shadow.one};
