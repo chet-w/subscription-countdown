@@ -1,4 +1,4 @@
-import { createContext, ReactElement, useContext } from "react";
+import { createContext, ReactElement, useContext, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Notification } from "../../components/Notification";
 import {
@@ -21,19 +21,39 @@ export function NotificationProvider(
   const [notifiction, setNotification] =
     useState<NotificationType | null>(null);
 
-  const success = (message: string) => {
-    setNotification({ message: message, variant: "success" });
+  useEffect(() => {
+    if (notifiction) {
+      setTimeout(() => {
+        setNotification(null);
+      }, notifiction.duration || 3000);
+    }
+  }, [notifiction]);
+
+  const success = (message: string, duration?: number) => {
+    setNotification({
+      message: message,
+      variant: "success",
+      duration: duration
+    });
   };
 
-  const info = (message: string) => {
-    setNotification({ message: message, variant: "info" });
+  const info = (message: string, duration?: number) => {
+    setNotification({ message: message, variant: "info", duration: duration });
   };
 
-  const warning = (message: string) => {
-    setNotification({ message: message, variant: "warning" });
+  const warning = (message: string, duration?: number) => {
+    setNotification({
+      message: message,
+      variant: "warning",
+      duration: duration
+    });
   };
-  const danger = (message: string) => {
-    setNotification({ message: message, variant: "danger" });
+  const danger = (message: string, duration?: number) => {
+    setNotification({
+      message: message,
+      variant: "danger",
+      duration: duration
+    });
   };
 
   return (
