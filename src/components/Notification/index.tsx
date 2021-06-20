@@ -1,10 +1,18 @@
 import { ReactElement } from "react";
 import { NotificationProps } from "./types";
+import * as S from "./styles";
+import { variants, transition } from "./animations";
 
 export function Notification(props: NotificationProps): ReactElement {
   return (
-    <div>
+    <S.Notification
+      variants={variants}
+      transition={transition}
+      initial="hidden"
+      animate="active"
+      exit="hidden"
+    >
       {props.variant}: {props.message}
-    </div>
+    </S.Notification>
   );
 }
