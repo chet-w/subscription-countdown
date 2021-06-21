@@ -6,6 +6,7 @@ import { variants } from "./animations";
 export function Notification(props: NotificationProps): ReactElement {
   return (
     <S.Notification
+      layout="position"
       variants={variants}
       variant={props.variant}
       initial="hidden"

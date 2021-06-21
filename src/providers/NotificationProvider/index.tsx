@@ -1,12 +1,18 @@
-import { createContext, ReactElement, useContext, useEffect } from "react";
+import {
+  useState,
+  createContext,
+  ReactElement,
+  useContext,
+  useEffect
+} from "react";
 import { AnimatePresence } from "framer-motion";
 import { Notification } from "../../components/Notification";
+import { NotificationContainer } from "../../components/NotificationContainer";
 import {
   NotificationContextValues,
   NotificationProviderProps,
   Notification as NotificationType
 } from "./types";
-import { useState } from "react";
 
 const NotificationContext =
   createContext<NotificationContextValues | null>(null);
@@ -18,8 +24,7 @@ export function useNotification(): NotificationContextValues {
 export function NotificationProvider(
   props: NotificationProviderProps
 ): ReactElement {
-  const [notifiction, setNotification] =
-    useState<NotificationType | null>(null);
+  const [notifictions, setNotifications] = useState<NotificationType[]>([]);
 
   useEffect(() => {
     // if (notifiction) {
@@ -27,41 +32,62 @@ export function NotificationProvider(
     //     setNotification(null);
     //   }, notifiction.duration || 3000);
     // }
-  }, [notifiction]);
+  }, [notifictions.length]);
 
   const success = (message: string, duration?: number) => {
-    setNotification({
-      message: message,
-      variant: "success",
-      duration: duration
-    });
+    setNotifications([
+      ...notifictions,
+      {
+        message: message,
+        variant: "success",
+        duration: duration
+      }
+    ]);
   };
 
   const info = (message: string, duration?: number) => {
-    setNotification({ message: message, variant: "info", duration: duration });
+    setNotifications([
+      ...notifictions,
+      {
+        message: message,
+        variant: "info",
+        duration: duration
+      }
+    ]);
   };
 
   const warning = (message: string, duration?: number) => {
-    setNotification({
-      message: message,
-      variant: "warning",
-      duration: duration
-    });
+    setNotifications([
+      ...notifictions,
+      {
+        message: message,
+        variant: "warning",
+        duration: duration
+      }
+    ]);
   };
   const danger = (message: string, duration?: number) => {
-    setNotification({
-      message: message,
-      variant: "danger",
-      duration: duration
-    });
+    setNotifications([
+      ...notifictions,
+      {
+        message: message,
+        variant: "danger",
+        duration: duration
+      }
+    ]);
   };
 
   return (
     <NotificationContext.Provider value={{ success, info, warning, danger }}>
       {props.children}
-      <AnimatePresence>
-        {notifiction && <Notification {...notifiction} />}
-      </AnimatePresence>
+      <NotificationContainer>
+        <AnimatePresence>
+          {notifictions.length &&
+            notifictions.map((notification) => (
+              <Notification {...notification} />
+            ))}
+        </AnimatePresence>
+      </NotificationContainer>
     </NotificationContext.Provider>
   );
 }
