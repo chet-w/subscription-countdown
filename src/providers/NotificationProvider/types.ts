@@ -14,6 +14,7 @@ export interface NotificationProviderProps {
 
 export interface Notification extends NotificationProps {
   duration?: number;
+  id: string;
 }
 
 export type NotificationVariant = "success" | "info" | "warning" | "danger";

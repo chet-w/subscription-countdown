@@ -2,7 +2,7 @@ import { Variants } from "framer-motion";
 
 export const variants: Variants = {
   hidden: {
-    y: 100,
+    y: 32,
     opacity: 0
   },
   active: {

@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect
 } from "react";
+import uniqueId from "lodash/uniqueId";
 import { AnimatePresence } from "framer-motion";
 import { Notification } from "../../components/Notification";
 import { NotificationContainer } from "../../components/NotificationContainer";
@@ -14,8 +15,9 @@ import {
   Notification as NotificationType
 } from "./types";
 
-const NotificationContext =
-  createContext<NotificationContextValues | null>(null);
+const NotificationContext = createContext<NotificationContextValues | null>(
+  null
+);
 
 export function useNotification(): NotificationContextValues {
   return useContext(NotificationContext)!;
@@ -24,55 +26,57 @@ export function useNotification(): NotificationContextValues {
 export function NotificationProvider(
   props: NotificationProviderProps
 ): ReactElement {
-  const [notifictions, setNotifications] = useState<NotificationType[]>([]);
+  const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
-  useEffect(() => {
-    // if (notifiction) {
-    //   setTimeout(() => {
-    //     setNotification(null);
-    //   }, notifiction.duration || 3000);
-    // }
-  }, [notifictions.length]);
+  const removeNotification = (id: string) => {
+    setNotifications([
+      ...notifications.filter((notification) => notification.id !== id)
+    ]);
+  };
 
   const success = (message: string, duration?: number) => {
     setNotifications([
-      ...notifictions,
+      ...notifications,
       {
         message: message,
         variant: "success",
-        duration: duration
+        duration: duration,
+        id: uniqueId()
       }
     ]);
   };
 
   const info = (message: string, duration?: number) => {
     setNotifications([
-      ...notifictions,
+      ...notifications,
       {
         message: message,
         variant: "info",
-        duration: duration
+        duration: duration,
+        id: uniqueId()
       }
     ]);
   };
 
   const warning = (message: string, duration?: number) => {
     setNotifications([
-      ...notifictions,
+      ...notifications,
       {
         message: message,
         variant: "warning",
-        duration: duration
+        duration: duration,
+        id: uniqueId()
       }
     ]);
   };
   const danger = (message: string, duration?: number) => {
     setNotifications([
-      ...notifictions,
+      ...notifications,
       {
         message: message,
         variant: "danger",
-        duration: duration
+        duration: duration,
+        id: uniqueId()
       }
     ]);
   };
@@ -82,9 +86,13 @@ export function NotificationProvider(
       {props.children}
       <NotificationContainer>
         <AnimatePresence>
-          {notifictions.length &&
-            notifictions.map((notification) => (
-              <Notification {...notification} />
+          {notifications.length &&
+            notifications.map((notification) => (
+              <Notification
+                {...notification}
+                key={notification.id}
+                dismissNotification={(id: string) => removeNotification(id)}
+              />
             ))}
         </AnimatePresence>
       </NotificationContainer>
