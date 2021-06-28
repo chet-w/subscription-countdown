@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { Heading } from "../Heading";
 import { UpcomingChargesProps } from "./types";
 import * as S from "./styles";

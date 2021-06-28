@@ -1,3 +1,4 @@
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { AllSubscriptions } from "./components/AllSubscriptions";
 import { Layout } from "./components/Layout";

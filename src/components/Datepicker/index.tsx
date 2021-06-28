@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { useField } from "formik";
 import { AnimatePresence } from "framer-motion";
 import slugify from "slugify";

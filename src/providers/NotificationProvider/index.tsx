@@ -1,4 +1,4 @@
-import {
+import React, {
   useState,
   createContext,
   ReactElement,
@@ -30,7 +30,7 @@ export function NotificationProvider(
 
   const removeNotification = (id: string) => {
     setNotifications([
-      ...notifications.filter((notification) => notification.id !== id)
+      ...notifications.filter(notification => notification.id !== id)
     ]);
   };
 
@@ -87,7 +87,7 @@ export function NotificationProvider(
       <NotificationContainer>
         <AnimatePresence>
           {notifications.length &&
-            notifications.map((notification) => (
+            notifications.map(notification => (
               <Notification
                 {...notification}
                 key={notification.id}

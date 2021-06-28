@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../Input";
@@ -45,7 +45,7 @@ export function ServiceForm(props: ServiceFormProps): ReactElement {
           .required("Service needs a due date for the next payment")
           .min(new Date(), "Service due date can't be in the past")
       })}
-      onSubmit={async (values) => {
+      onSubmit={async values => {
         console.log(values);
         if (props.service) {
           await updateService(values);

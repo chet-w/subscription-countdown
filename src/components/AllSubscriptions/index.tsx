@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { AllSubscriptionProps } from "./types";
 import * as S from "./styles";
 import { Heading } from "../Heading";
@@ -30,7 +30,7 @@ export function AllSubscriptions(props: AllSubscriptionProps): ReactElement {
         Notification
       </Button>
       <S.ServiceContainer>
-        {services.map((service) => (
+        {services.map(service => (
           <Service
             {...service}
             key={JSON.stringify(service)}

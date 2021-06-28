@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import { ChangeEvent, ReactElement } from "react";
+import React, { ChangeEvent, ReactElement } from "react";
 import { useField, useFormikContext } from "formik";
 import { AnimatePresence } from "framer-motion";
 import { InputContainer } from "../Input/styles";
@@ -16,7 +16,7 @@ export function NumberInput(props: NumberInputProps): ReactElement {
 
   const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    const formattedValue = value.replaceAll(/[,$]/g, "") || "0";
+    const formattedValue = value.replace(/[,$]/g, "") || "0";
     event.target.value = formattedValue;
     handleChange(event);
   };
@@ -39,7 +39,7 @@ export function NumberInput(props: NumberInputProps): ReactElement {
         {...field}
         value={field.value}
         {...otherProps}
-        onChange={(event) => handleNumberChange(event)}
+        onChange={event => handleNumberChange(event)}
         id={slugify(props.name)}
       />
       <AnimatePresence>

@@ -1,13 +1,9 @@
-import { ReactElement, useEffect } from "react";
+import React, { ReactElement } from "react";
 import { NotificationProps } from "./types";
 import * as S from "./styles";
 import { variants } from "./animations";
 
 export function Notification(props: NotificationProps): ReactElement {
-  // useEffect(() => {
-  //   setTimeout(() => props.dismissNotification!(props.id), 2000);
-  // }, [props.id, props.dismissNotification]);
-
   return (
     <S.Notification
       layout="position"
