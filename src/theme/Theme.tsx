@@ -9,14 +9,22 @@ export const theme: DefaultTheme = {
     grey: "#3C4046",
     black: "#111111",
     yellow: "#ffc041",
-    success: "#0C9869",
-    successLight: "#d1eee4",
-    info: "#1890FF",
-    infoLight: "#b4dbff",
-    warning: "#F9AD15",
-    warningLight: "#fdf3dd",
-    danger: "#D9363E",
-    dangerLight: "#ffe8e9"
+    success: {
+      base: "#0C9869",
+      light: "#d1eee4"
+    },
+    info: {
+      base: "#1890FF",
+      light: "#b4dbff"
+    },
+    warning: {
+      base: "#F9AD15",
+      light: "#fdf3dd"
+    },
+    danger: {
+      base: "#D9363E",
+      light: "#ffe8e9"
+    }
   },
   breakpoints: {
     xs: 425,

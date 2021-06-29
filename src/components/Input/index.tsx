@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useField } from "formik";
 import { AnimatePresence } from "framer-motion";
 import slugify from "slugify";
@@ -32,7 +32,7 @@ export function Input(props: InputProps): ReactElement {
         {...otherProps}
         id={slugify(props.name)}
         onFocus={() => setIsActive(true)}
-        onBlur={(event) => handleBlur(event)}
+        onBlur={event => handleBlur(event)}
         aria-invalid={meta.touched && meta.error ? true : false}
         aria-describedby={`feedback-${slugify(props.name)}`}
       />

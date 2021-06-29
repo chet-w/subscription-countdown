@@ -1,4 +1,4 @@
-import { Fragment, ReactElement } from "react";
+import React, { Fragment, ReactElement } from "react";
 import { Header } from "../Header";
 import { Main } from "../Main";
 import { LayoutProps } from "./types";

@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { FormButtonsProps } from "./types";
 import * as S from "./styles";
 import { Button } from "../Button";

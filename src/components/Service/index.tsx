@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { format } from "date-fns";
 import { Heading } from "../Heading";
 import { Badge } from "../Badge";

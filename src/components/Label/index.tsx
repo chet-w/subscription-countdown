@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { LabelProps } from "./types";
 import * as S from "./styles";
 

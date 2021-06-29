@@ -1,4 +1,4 @@
-import { ReactElement, useRef } from "react";
+import React, { ReactElement, useRef } from "react";
 import { ModalProps } from "./types";
 import * as S from "./styles";
 import { variants, transition } from "./animations";

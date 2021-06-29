@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { Modal } from "../Modal";
 import { ServiceForm } from "../ServiceForm";
 import { NewServiceModalProps } from "./types";

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { mapKeys, camelCase, snakeCase } from "lodash";
 import { Service } from "../../types/Service";
 import { UseServiceType } from "./types";
@@ -10,7 +10,7 @@ export function useService(id?: number): UseServiceType {
   const { services, setServices } = useServices();
 
   const updateServiceInContext = (serviceData: Service) => {
-    const withUpdateValue = services.map((srv) => {
+    const withUpdateValue = services.map(srv => {
       if (srv.id === serviceData.id) {
         return serviceData;
       }
@@ -87,11 +87,11 @@ export function useService(id?: number): UseServiceType {
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3000/services/${id}`)
-        .then((res) => res.json())
-        .then((data) =>
+        .then(res => res.json())
+        .then(data =>
           setService(mapKeys(data, (_, k) => camelCase(k)) as Service)
         )
-        .catch((error) => console.error(error));
+        .catch(error => console.error(error));
     }
   }, [id]);
 
