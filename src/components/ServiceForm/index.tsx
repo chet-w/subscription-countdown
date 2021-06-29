@@ -11,6 +11,7 @@ import { FormButtons } from "../FormButtons";
 import { useService } from "../../hooks/useService";
 import { useModal } from "../../providers/ModalProvider";
 import { Service } from "../../types/Service";
+import { useNotification } from "../../providers/NotificationProvider";
 
 const OCCURRENCE_OPTIONS: Option[] = [
   { label: "Weekly", value: "weekly" },
@@ -29,6 +30,7 @@ const INITIAL_SERVICE_VALUES: Service = {
 export function ServiceForm(props: ServiceFormProps): ReactElement {
   const { updateService, createService } = useService(props?.service?.id);
   const { closeModal } = useModal();
+  const notification = useNotification();
 
   return (
     <Formik
@@ -49,8 +51,10 @@ export function ServiceForm(props: ServiceFormProps): ReactElement {
         console.log(values);
         if (props.service) {
           await updateService(values);
+          notification.success(`Updated ${values.name}`);
         } else {
           await createService(values);
+          notification.success(`Added ${values.name}`);
         }
         closeModal();
       }}

@@ -5,3 +5,7 @@ export interface NotificationProps {
   variant: NotificationVariant;
   id: string;
 };
+
+export interface NotificationIconProps {
+  variant: NotificationVariant;
+}
