@@ -14,9 +14,6 @@ export function Notification(props: NotificationProps): ReactElement {
       exit="hidden"
     >
       {props.variant}: {props.message} {props.id}
-      <button onClick={() => props.dismissNotification!(props.id)}>
-        Close
-      </button>
     </S.Notification>
   );
 }

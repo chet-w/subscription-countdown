@@ -2,8 +2,7 @@ import React, {
   useState,
   createContext,
   ReactElement,
-  useContext,
-  useEffect
+  useContext
 } from "react";
 import uniqueId from "lodash/uniqueId";
 import { AnimatePresence } from "framer-motion";
@@ -29,21 +28,24 @@ export function NotificationProvider(
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
   const removeNotification = (id: string) => {
-    setNotifications([
-      ...notifications.filter(notification => notification.id !== id)
-    ]);
+    notifications.splice(0, 1);
+    setNotifications([...notifications]);
   };
 
   const success = (message: string, duration?: number) => {
+    const id = uniqueId("notification_");
     setNotifications([
       ...notifications,
       {
         message: message,
         variant: "success",
         duration: duration,
-        id: uniqueId()
+        id
       }
     ]);
+    setTimeout(() => {
+      removeNotification(id);
+    }, 3000);
   };
 
   const info = (message: string, duration?: number) => {
@@ -53,7 +55,7 @@ export function NotificationProvider(
         message: message,
         variant: "info",
         duration: duration,
-        id: uniqueId()
+        id: uniqueId("notification_")
       }
     ]);
   };
@@ -65,7 +67,7 @@ export function NotificationProvider(
         message: message,
         variant: "warning",
         duration: duration,
-        id: uniqueId()
+        id: uniqueId("notification_")
       }
     ]);
   };
@@ -76,7 +78,7 @@ export function NotificationProvider(
         message: message,
         variant: "danger",
         duration: duration,
-        id: uniqueId()
+        id: uniqueId("notification_")
       }
     ]);
   };
@@ -85,14 +87,10 @@ export function NotificationProvider(
     <NotificationContext.Provider value={{ success, info, warning, danger }}>
       {props.children}
       <NotificationContainer>
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {notifications.length &&
             notifications.map(notification => (
-              <Notification
-                {...notification}
-                key={notification.id}
-                dismissNotification={(id: string) => removeNotification(id)}
-              />
+              <Notification {...notification} key={notification.id} />
             ))}
         </AnimatePresence>
       </NotificationContainer>
