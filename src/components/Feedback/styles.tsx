@@ -6,5 +6,5 @@ export const Feedback = styled(motion.div)`
   font-weight: bold;
   position: absolute;
   top: calc(100% + 0.25rem);
-  color: ${(props) => props.theme.colors.danger};
+  color: ${props => props.theme.colors.danger.base};
 `;

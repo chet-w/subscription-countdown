@@ -1,7 +1,11 @@
 // import original module declarations
 import "styled-components";
 
-// and extend them!
+export interface ColorSet {
+  base: string;
+  light: string;
+  dark?: string;
+}
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
@@ -11,15 +15,11 @@ declare module "styled-components" {
       lightGrey: string;
       grey: string;
       black: string;
-      success: string;
-      successLight: string;
-      info: string;
-      infoLight: string;
-      warning: string;
-      warningLight: string;
+      success: ColorSet;
+      info: ColorSet;
+      warning: ColorSet;
+      danger: ColorSet;
       yellow: string;
-      danger: string;
-      dangerLight: string;
     };
     breakpoints: {
       xs: number;
